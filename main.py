@@ -17,20 +17,17 @@ class App:
         self.btn_Left.grid(row=1, column=4, sticky="nsew")
         #estado	"normal" (padrão) ou "desativado" (não clicável, cor mais escura)
         
-        self.btn_rotate= CTkButton(MASTER,
-                                   command= None,
-                                   fg_color= "#242424",
-                                   hover_color="#333333")
+        self.btn_rotate= BtnImage(MASTER,
+                                  image= PREVIOUS_PHOTO_BUTTON_IMG,
+                                  command= None)
        
-        self.btn_delete= CTkButton(MASTER,
-                                   command= None,
-                                   fg_color= "#242424",
-                                   hover_color="#333333")
+        self.btn_delete= BtnImage(MASTER,
+                                  image= DELETE_BUTTON_IMG,
+                                  command= None)
                                    
-        self.btnzoom= CTkButton(MASTER,
-                                command= MASTER.fullscreen,
-                                fg_color= "#242424",
-                                hover_color="#333333")
+        self.btnzoom= BtnImage(MASTER,
+                               image= NEXT_PHOTO_BUTTON_IMG,
+                               command= MASTER.fullscreen)
                                 
         self.btn_rotate.grid(row=2, column=0, sticky="nsew")
         self.btn_delete.grid(row=2, column=1, columnspan=3, sticky="nsew")
