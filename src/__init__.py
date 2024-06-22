@@ -3,7 +3,7 @@ from src.window import Window
 from customtkinter import CTkImage
 from pathlib import Path
 
-MASTER= Window(750, 500, "app", True)
+MASTER= Window(750, 500, "Simple PicViewer", True)
 PATH= Path(__file__).parent / "assets"
 
 #IMGs
