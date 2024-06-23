@@ -3,8 +3,12 @@ from customtkinter import CTkButton, CTkImage
 
 def create_image(image_path):
     img = Image.open(image_path)
-    return CTkImage(light_image=img, size=img.size)
-    
+    if img.size > (600, 600):
+        size = (img.size[0] // 2, img.size[1] // 2)
+    else:
+        size = img.size
+    return CTkImage(light_image=img, size=size)
+
 def get_imgs(path):
     #Pega uma lista de arquivos de um Diretorio
     #retorna uma lista destes arquivos Convertidos em CTkImage()
