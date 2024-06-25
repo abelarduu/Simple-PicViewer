@@ -4,7 +4,6 @@ from customtkinter import *
 class App:
     def __init__(self):
         self.index= 0
-        self.imgs_list= get_imgs(PATH)
         self.btn_right= BtnImage(MASTER,
                                  image= PREVIOUS_PHOTO_BUTTON_IMG,
                                  command= self.prev_image)
@@ -33,11 +32,12 @@ class App:
         self.btnzoom.grid(row=2, column=4, sticky="nsew")
 
     def render_image(self):
-        self.img_lbl= CTkLabel(MASTER, image= self.imgs_list[self.index], text= None)
+        imgs_list= get_imgs(PATH)
+        self.img_lbl= CTkLabel(MASTER, image= create_image(imgs_list[self.index]), text= None)
         self.img_lbl.grid(row=1, column=1, columnspan=3, sticky="nsew")
         
     def next_image(self):
-        if self.index < len(self.imgs_list)-1:
+        if self.index < len(imgs_list)-1:
             self.index+= 1
             MASTER.after(10, self.render_image)
         
@@ -47,9 +47,9 @@ class App:
             MASTER.after(10, self.render_image)
             
     def delete_image(self):
-        #erro pq o self.img_lbl._image é um CTkbtton, tem q pegar é o Path e nao o CTkImage
-        img_path= self.img_lbl._image._light_image
-        img_path.unlink()
+        imgs_list[self.index].unlink()
+        self.index-= 1
+        MASTER.after(10, self.render_image)
 
     def run(self):
         MASTER.after(10, self.render_image)

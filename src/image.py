@@ -14,11 +14,11 @@ def get_imgs(path):
     #retorna uma lista destes arquivos Convertidos em CTkImage()
     files_list= [file for file in path.iterdir() if file.is_file()]
     #and ".png" == file.suffix() or ".jpg" == file.suffix()
-    return [create_image(img) for img in files_list]
+    return [img for img in files_list]
 
 class BtnImage(CTkButton):
-    def __init__(self, master, image, command):
-        super().__init__(master, 
+    def __init__(self, master, image, command= None):
+        super().__init__(master,
                          text= None,
                          image= image,
                          command= command,
