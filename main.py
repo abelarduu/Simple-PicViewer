@@ -35,16 +35,18 @@ class App:
         imgs_list= get_imgs(PATH)
         self.img_lbl= CTkLabel(MASTER, image= create_image(imgs_list[self.index]), text= None)
         self.img_lbl.grid(row=1, column=1, columnspan=3, sticky="nsew")
-        
+    
     def next_image(self):
+        imgs_list= get_imgs(PATH)
         if self.index < len(imgs_list)-1:
             self.index+= 1
-            MASTER.after(10, self.render_image)
-        
+        MASTER.after(10, self.render_image)
+    
     def prev_image(self):
+        imgs_list= get_imgs(PATH)
         if self.index > 0:
             self.index-= 1
-            MASTER.after(10, self.render_image)
+        MASTER.after(10, self.render_image)
             
     def delete_image(self):
         imgs_list[self.index].unlink()

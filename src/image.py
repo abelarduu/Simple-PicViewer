@@ -11,7 +11,6 @@ def create_image(image_path):
 
 def get_imgs(path):
     #Pega uma lista de arquivos de um Diretorio
-    #retorna uma lista destes arquivos Convertidos em CTkImage()
     files_list= [file for file in path.iterdir() if file.is_file()]
     #and ".png" == file.suffix() or ".jpg" == file.suffix()
     return [img for img in files_list]
