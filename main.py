@@ -33,8 +33,13 @@ class App:
 
     def render_image(self):
         imgs_list= get_imgs(PATH)
-        self.img_lbl= CTkLabel(MASTER, image= create_image(imgs_list[self.index]), text= None)
-        self.img_lbl.grid(row=1, column=1, columnspan=3, sticky="nsew")
+        try:
+            img= create_image(imgs_list[self.index])
+            self.img_lbl= CTkLabel(MASTER, image= img, text= None)
+        except IndexError:
+            self.img_lbl= CTkLabel(MASTER, text= None)
+        finally:
+            self.img_lbl.grid(row=1, column=1, columnspan=3, sticky="nsew")
     
     def next_image(self):
         imgs_list= get_imgs(PATH)
@@ -54,6 +59,7 @@ class App:
             imgs_list[self.index].unlink()
         except FileNotFoundError:
             imgs_list[self.index].resolve().unlink()
+        except IndexError: pass
         finally:
             if self.index > 0:
                 self.index-= 1
