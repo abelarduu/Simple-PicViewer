@@ -11,12 +11,9 @@ class App:
         self.btn_Left= BtnImage(MASTER,
                                 image= NEXT_PHOTO_BUTTON_IMG,
                                 command= self.next_image)
-         
-        self.btn_right.grid(row=1, column=0, sticky="nsew")
-        self.btn_Left.grid(row=1, column=4, sticky="nsew")
-        #estado	"normal" (padrão) ou "desativado" (não clicável, cor mais escura)
+     
         self.btn_rotate= BtnImage(MASTER,
-                                  image= PREVIOUS_PHOTO_BUTTON_IMG,
+                                  image= ROTATE_BUTTON_IMG,
                                   command= None)
        
         self.btn_delete= BtnImage(MASTER,
@@ -26,7 +23,9 @@ class App:
         self.btnzoom= BtnImage(MASTER,
                                image= FULLSCREEN_BUTTON_IMG,
                                command= MASTER.fullscreen)
-        
+                               
+        self.btn_right.grid(row=1, column=0, sticky="nsew")
+        self.btn_Left.grid(row=1, column=4, sticky="nsew")
         self.btn_rotate.grid(row=2, column=0, sticky="nsew")
         self.btn_delete.grid(row=2, column=1, columnspan=3, sticky="nsew")
         self.btnzoom.grid(row=2, column=4, sticky="nsew")
@@ -38,6 +37,7 @@ class App:
             self.img_lbl= CTkLabel(MASTER, image= img, text= None)
         except IndexError:
             self.img_lbl= CTkLabel(MASTER, text= None)
+            #self.img_lbl= BtnImage(MASTER, image= GET_DIR_BUTTON_IMG, command= get_dir)
         finally:
             self.img_lbl.grid(row=1, column=1, columnspan=3, sticky="nsew")
     

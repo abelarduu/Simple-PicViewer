@@ -9,5 +9,6 @@ PATH= Path(__file__).parent / "assets"
 imgs_list= get_imgs(PATH)
 PREVIOUS_PHOTO_BUTTON_IMG = create_image(PATH / "arrow1.png")
 NEXT_PHOTO_BUTTON_IMG = create_image(PATH / "arrow2.png")
+ROTATE_BUTTON_IMG= create_image(PATH / "rotate.png")
 DELETE_BUTTON_IMG= create_image(PATH / "delete.png")
 FULLSCREEN_BUTTON_IMG= create_image(PATH / "fullscreen.png")
