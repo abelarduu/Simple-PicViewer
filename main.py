@@ -47,11 +47,17 @@ class App:
         if self.index > 0:
             self.index-= 1
         MASTER.after(10, self.render_image)
-            
+
     def delete_image(self):
-        imgs_list[self.index].unlink()
-        self.index-= 1
-        MASTER.after(10, self.render_image)
+        imgs_list= get_imgs(PATH)
+        try:
+            imgs_list[self.index].unlink()
+        except FileNotFoundError:
+            imgs_list[self.index].resolve().unlink()
+        finally:
+            if self.index > 0:
+                self.index-= 1
+            MASTER.after(10, self.render_image)
 
     def run(self):
         MASTER.after(10, self.render_image)
