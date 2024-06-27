@@ -1,5 +1,6 @@
 from src import *
 from customtkinter import *
+from PIL import Image
 
 class App:
     def __init__(self):
@@ -14,7 +15,7 @@ class App:
      
         self.btn_rotate= BtnImage(MASTER,
                                   image= ROTATE_BUTTON_IMG,
-                                  command= None)
+                                  command= self.rotate_image)
        
         self.btn_delete= BtnImage(MASTER,
                                   image= DELETE_BUTTON_IMG,
@@ -36,8 +37,9 @@ class App:
             img= create_image(imgs_list[self.index])
             self.img_lbl= CTkLabel(MASTER, image= img, text= None)
         except IndexError:
-            self.img_lbl= CTkLabel(MASTER, text= None)
-            #self.img_lbl= BtnImage(MASTER, image= GET_DIR_BUTTON_IMG, command= get_dir)
+            self.img_lbl= BtnImage(MASTER, 
+                                   image= FOLDER_BUTTON_IMG,
+                                   command= None)
         finally:
             self.img_lbl.grid(row=1, column=1, columnspan=3, sticky="nsew")
     
@@ -53,6 +55,11 @@ class App:
             self.index-= 1
         MASTER.after(10, self.render_image)
 
+    def rotate_image(self):
+        with Image.open(imgs_list[self.index]) as img:
+            img.rotate(90).save(imgs_list[self.index])
+        MASTER.after(10, self.render_image)
+            
     def delete_image(self):
         imgs_list= get_imgs(PATH)
         try:
