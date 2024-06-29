@@ -34,7 +34,8 @@ class App:
         folder= askdirectory()
         if Path(folder).is_dir():
             self.path= Path(folder)
-        
+        MASTER.after(10, self.render_image)
+    
     def render_image(self):
         try:
             imgs_list= get_imgs(self.path)
@@ -43,11 +44,11 @@ class App:
         except IndexError:
             self.img_lbl= BtnImage(MASTER, 
                                    image= FOLDER_BUTTON_IMG,
-                                   text= "Selecionar Pasta",
+                                   text= "Select folder",
                                    command= self.get_folder)
         finally:
             self.img_lbl.grid(row=1, column=1, columnspan=3, sticky="nsew")
-    
+
     def next_image(self):
         imgs_list= get_imgs(self.path)
         if self.index < len(imgs_list)-1:
