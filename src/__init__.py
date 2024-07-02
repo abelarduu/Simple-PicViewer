@@ -1,7 +1,5 @@
 from src.image import *
 from src.window import Window
-from customtkinter import CTkImage,CTkLabel
-from tkinter.filedialog import askdirectory
 from pathlib import Path
 
 ASSETS_PATH= Path(__file__).parent / "assets"
