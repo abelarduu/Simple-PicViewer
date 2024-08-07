@@ -1,4 +1,5 @@
 from customtkinter import CTk, set_appearance_mode
+from pathlib import Path
 
 class Window(CTk):
     def __init__(self, w: int, h: int, title: str, resizable: bool):
@@ -8,6 +9,7 @@ class Window(CTk):
         self.minsize(w, h)
         self.state("zoomed")
         self.resizable(resizable, resizable)
+        self.iconbitmap( Path(__file__).parent / 'assets/logo.ico') 
         set_appearance_mode("dark")
         
         self.columnconfigure(1, weight=5)  # Configura o gerenciamento de layout para expansão

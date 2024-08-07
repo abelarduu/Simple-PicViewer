@@ -1,6 +1,6 @@
 <div align="center">
 
-# Simple-PicViewer
+![logo](img/logo.png)
 
 ### Sobre o projeto
 
